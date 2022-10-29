@@ -397,8 +397,20 @@ auxLoop (x1,y1) (x2,y2) (h:t) = case h of
                                             Oeste -> auxLoop (x1-1,y1) (x2,y2) t
                                             Este  -> auxLoop (x1+1,y1) (x2,y2) t
                                         
--- 48. 
+-- 48. Dada uma lista com retangulos contar quantos deles sao quadrados
 
+type Ponto = (Float,Float)
+data Retangulo = Rect Ponto Ponto
+
+contaQuadrados:: [Retangulo] -> Int
+contaQuadrados [] = 0
+contaQuadrados (Rect (x1,y1) (x2,y2):t) = if(abs(y2-y1) == abs(x2-x1)) then 1+contaQuadrados t else contaQuadrados t 
+
+-- 49. Dada uma lista de retangulos, determinar a area total
+
+areaTotal:: [Retangulo] -> Float
+areaTotal [] = 0
+areaTotal (Rect (x1,y1) (x2,y2):t) = abs(x2-x1)*abs(y2-y1) + areaTotal t
 
 -- 50. Recebe uma lista de equipamentos e devolve a quantidade de equipamentos que nao devem ser reparados.
 
