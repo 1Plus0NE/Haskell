@@ -387,6 +387,7 @@ auxLoop2 (x,y) (h:t) = case h of
 -}
 
 hasLoops:: (Int,Int) -> [Movimento] -> Bool
+hasLoops _ [] = False
 hasLoops (x,y) m = auxLoop (x,y) (x,y) m
 
 auxLoop:: (Int,Int) -> (Int,Int) -> [Movimento] -> Bool
