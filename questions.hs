@@ -274,7 +274,7 @@ lookup' n ((x,y):t) = if(n == x) then (Just y) else lookup' n t
 preCrescente:: Ord a => [a] -> [a]
 preCrescente [] = []
 preCrescente [x] = [x]
-preCrescente (x:y:t) = if(x<y) then preCrescente t else preCrescente t
+preCrescente (x:y:t) = if(x<=y) then x:preCrescente (y:t) else [x]
 
 -- 37. Ordenar uma lista assumindo que existe a funçao insert por usar
 
