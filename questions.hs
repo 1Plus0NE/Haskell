@@ -327,7 +327,9 @@ removeMSet a ((x,y):t) | a == x = if(y > 1) then (x,(y-1)):t else t
 
 constroiMSet:: Ord a => [a] -> [(a,Int)]
 constroiMSet [] = []
-constroiMSet l = auxConstroi (last l) (constroiMSet (init l))
+constroiMSet l = auxConstroi (last l) (constroiMSet (init l)) -- Por ordem
+constroiMSet l = auxConstroi h (constroiMSet t) -- Não ordenado
+
 
 auxConstroi:: Eq a => a -> [(a,Int)] -> [(a,Int)]
 auxConstroi a [] = [(a,1)]
